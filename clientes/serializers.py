@@ -18,5 +18,8 @@ class ClienteSerializer(serializers.ModelSerializer):
         if not rg_valido(data['rg']):
             raise serializers.ValidationError({'rg': "Este campo precisa ter 9 dígitos no mínimo"})
         
+        if not celular_valido(data['celular']):
+            raise serializers.ValidationError({'celular': "O número de celular deve seguir este modelo: 19 91234-1234"})
+        
 
         return data
